@@ -236,7 +236,6 @@ $cChatBotZindex: 10000;
         right: inherit;
         left: 10px;
     }
-
     &.--compact {
         display: block !important;
         position: relative !important;
@@ -244,6 +243,12 @@ $cChatBotZindex: 10000;
         right: inherit !important;
         left: inherit !important;
         top: inherit !important;
+    }
+    &.--noTitles {
+        padding-top: 15px;
+        .c-chatbot__content__title {
+            display: none;
+        }
     }
 
     // small components

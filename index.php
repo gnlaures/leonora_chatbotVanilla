@@ -38,6 +38,10 @@
                 <p><strong>general.hero: </strong>"", "tag/id/classe"</p>
             </li>
             <li>
+                <p><strong>general.extraClass: </strong>"", "--noTitles"</p>
+                <p>--noTitles retira o título de todas os componentes</p>
+            </li>
+            <li>
                 <p><strong>general.home: </strong>"", "component-id"</p>
                 <p>Classes adicionais que serão inseridas no elemento <strong>.c-chatbot</strong>.</p>
             </li>
