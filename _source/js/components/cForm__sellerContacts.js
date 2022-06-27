@@ -1,0 +1,1 @@
+const cForm__sellerContacts = '<p>Include VTEX Component - Form Seller Contacts</p>';

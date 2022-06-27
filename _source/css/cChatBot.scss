@@ -1,0 +1,659 @@
+// imports
+@import "_theme";
+@import "_mixins";
+@import "_reset";
+@import "_presets";
+@import "_utilities";
+@import "_animations";
+
+body {
+    background: url("../arquivos/bg.png");
+    background-position-y: top;
+    background-position-x: left;
+}
+
+$cChatBotZindex: 10000;
+.c-chatbotCall {
+    @include transition();
+    @include roundedAll(20px);
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: $cChatBotZindex;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    background: #9DB9FF;
+    cursor: pointer;
+    i {
+        @include flexWidth(26px);
+        display: block;
+        img {
+            display: block;
+            object-fit: contain;
+            width: 26px;
+        }
+    }
+    div {
+        flex: 1 1 auto;
+        padding-left: 8px;
+        span {
+            display: block;
+            width: 100%;
+            font-size: 14px;
+            font-weight: $fwRegular;
+            line-height: 1;
+            color: $black;
+            strong {
+                font-size: 16px;
+                font-weight: $fwBold;
+            }
+        }
+    }
+    &:hover {
+        background: #81A4FF;
+    }
+
+    &.--left {
+        left: 10px;
+        right: inherit;
+    }
+}
+.c-chatbotMask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $cChatBotZindex - 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.c-chatbot {
+    @include transition($duration: 1s);
+    @include default__shadow;
+    @include roundedAll();
+    @include scroll($bg: $white3, $bar: $primary, $size: 5px);
+    @include calc(max-height, 100vh, '-', 140px);
+    @include calc(width, 100%, '-', 20px);
+    //display: block;
+    display: none;
+    border: 1px solid $white3;
+    max-width: 620px;
+    position: fixed;
+    bottom: 60px;
+    right: 10px;
+    z-index: $cChatBotZindex;
+    background: $white;
+    overflow: auto;
+    padding: 25px;
+    &__header {
+        display: block;
+        position: relative;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $gray1;
+        &__navigation {
+            @include transition();
+            display: block;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        &__close {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            right: 0;
+            a {
+                @include transition();
+                @include roundedAll(15px);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                * {
+                    display: block;
+                    width: 10px;
+                }
+                &:hover {
+                    background: $gray1;
+                }
+            }
+        }
+        &__back {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &__brand {
+            display: block;
+            width: 100%;
+            img {
+                @include transition();
+                display: block;
+                width: 192px;
+                margin: 0 auto;
+            }
+        }
+        &__mainTitle {
+            display: block;
+            width: 100%;
+            padding: 0 15px;
+            h2 {
+                @include paragrafos($fs: 16px);
+                text-align: center;
+            }
+        }
+
+        &.--inner {
+            .c-chatbot__header__navigation {
+                margin-bottom: 0;
+            }
+            .c-chatbot__header__back {
+                display: block !important;
+                top: 8px;
+            }
+            .c-chatbot__header__brand {
+                img {
+                    width: 170px;
+                }
+            }
+            .c-chatbot__header__mainTitle {
+                display: none;
+            }
+        }
+    }
+    &__hero {
+        @include transition();
+    }
+    &__content {
+        @include transition();
+        display: none;
+        &__listOptions {
+            display: block;
+            li {
+                margin-bottom: 6px;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        &__title {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid $gray1;
+            h3 {
+                @include paragrafos($fs: 16px, $fw: $fwBold)
+            }
+        }
+        &__article {
+            p {
+                @include paragrafos($fs: 16px);
+                margin-bottom: 10px;
+            }
+            ul {
+                margin-top: 15px;
+            }
+        }
+
+        &.is-active {
+            @include animation__showContent();
+            display: block;
+        }
+        &.--noTitle {
+            .c-chatbot__content__title {
+                display: none;
+            }
+        }
+    }
+    &__footer {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid $gray1;
+        p {
+            @include paragrafos($fs: 12px);
+            text-align: center;
+            a {
+                color: $text;
+            }
+        }
+    }
+
+    &.is-active {
+        display: block;
+        padding-bottom: 20px;
+    }
+
+    &.--left {
+        right: inherit;
+        left: 10px;
+    }
+
+    &.--compact {
+        display: block !important;
+        position: relative !important;
+        bottom: inherit !important;
+        right: inherit !important;
+        left: inherit !important;
+        top: inherit !important;
+    }
+
+    // small components
+    .c-btn {
+        @include transition();
+        @include roundedAll(25px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background: $gray1;
+        padding: 10px 20px;
+        text-align: center;
+        span {
+            @include paragrafos($fs: 16px);
+            display: block;
+            text-align: center;
+        }
+
+        &.--small {
+            display: inline-block;
+        }
+        &.--white {
+            background: $white2;
+            &:hover {
+                background: $gray2;
+            }
+        }
+        &.--primary {
+            background: $primary;
+            font-weight: $fwSemiBold;
+            color: $white;
+            &:hover {
+                background: $primaryDark;
+            }
+        }
+
+        &.--strong {
+            span {
+                font-weight: $fwSemiBold;
+            }
+        }
+        &.--back {
+            border: 1px solid $gray3;
+            padding: 5px 10px;
+            background: $white;
+            span {
+                text-transform: uppercase;
+                font-weight: $fwSemiBold;
+                font-size: 12px;
+            }
+        }
+
+        &:hover {
+            background: $gray2;
+            text-decoration: none;
+            span {
+                color: $secondary;
+                text-decoration: none;
+            }
+        }
+    }
+    .c-video, .c-figure {
+        @include roundedAll();
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        * {
+            display: block;
+            width: 100%;
+        }
+    }
+    .c-form {
+        > ul {
+            @include calcWidthForPositionNegative(-10px);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            > li {
+                display: block;
+                padding: 10px;
+                span.js-error {
+                    @include paragrafos($fs: 12px);
+                    text-align: left;
+                    padding-top: 4px;
+                    display: none;
+                }
+                &.js-error {
+                    input, textarea, select {
+                        border-color: red;
+                    }
+                    span.js-error {
+                        display: block !important;
+                    }
+                }
+                &.--spacer {
+                    hr {
+                        display: block;
+                        width: 100%;
+                        height: 1px;
+                        background: $gray2;
+                    }
+                }
+            }
+        }
+        label {
+            @include paragrafos($tc: $secondary);
+            display: block;
+            font-weight: $fwBold;
+            margin-bottom: 3px;
+        }
+        input, textarea, select {
+            @include paragrafos();
+            @include roundedAll(20px);
+            @include transition();
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid $gray2;
+            background-color: transparent;
+            &:focus {
+                border: 1px solid $primary;
+            }
+        }
+        textarea {
+            padding: 10px 15px;
+            resize: none;
+            min-height: 80px;
+        }
+        button {
+            @include roundedAll(20px);
+            @include transition();
+            display: block;
+            width: 120px;
+            height: 40px;
+            background: $secondary;
+            color: $white;
+            font-weight: $fwBold;
+            font-size: 14px;
+            cursor: pointer;
+            &:hover, &:focus {
+                background: $secondaryDark;
+            }
+        }
+        .c-spacer {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 100%;
+        }
+
+        &__radio {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            padding-top: 6px;
+            &__item {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                margin-right: 30px;
+                input {
+                    width: 20px;
+                    height: 20px;
+                    padding: 0;
+                    cursor: pointer;
+                    &:checked {
+                        background-image: url('../../arquivos/cChatbot_checked.png');
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                    }
+                }
+                label {
+                    padding-left: 5px;
+                    margin-bottom: 0;
+                    font-weight: $fwRegular;
+                    color: $text;
+                    cursor: pointer;
+                    position: relative;
+                    top: 1px;
+                }
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+        }
+        &__select {
+            position: relative;
+            &:after {
+                content: '';
+                display: block;
+                width: 10px;
+                height: 8px;
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                z-index: 1;
+                margin-top: -4px;
+                background-image: url('../../arquivos/cChatbot_caretDown.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+            select {
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+    .c-spacer {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: $gray1;
+        margin: 12px auto;
+    }
+    .c-sellersList {
+        .e-whatsapp {
+            background: transparent;
+            color: inherit;
+            &__content {
+
+            }
+            &__search {
+                gap: 15px;
+                &__select {
+                    span, label {
+                        @include paragrafos($tc: $secondary);
+                        font-weight: $fwBold;
+                        margin-bottom: 2px;
+                        text-transform: capitalize;
+                    }
+                    select {
+                        @include paragrafos();
+                        @include roundedAll(20px);
+                        @include transition();
+                        display: block;
+                        width: 100%;
+                        padding: 12px 15px;
+                        border: 1px solid $gray2;
+                        background-color: transparent;
+                        &:focus {
+                            border: 1px solid $primary;
+                        }
+                    }
+                }
+            }
+            &__results {
+                margin-top: 15px;
+                gap: 10px;
+                grid-template-columns: repeat(1, 1fr);
+                &__card {
+                    @include roundedAll();
+                    border: 1px solid $gray2;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    box-shadow: none;
+                }
+                &__name {
+                    @include paragrafos();
+                    font-weight: $fwSemiBold;
+                    flex: 1 1 auto;
+                    padding-right: 10px;
+                }
+                &__link {
+                    @include flexWidth(180px);
+                    padding: 5px 10px;
+                    span {
+                        font-size: 12px;
+                    }
+                }
+            }
+            &__blank {
+                background: transparent;
+                padding: 25px;
+                p {
+                    @include paragrafos();
+                    text-align: center;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // c-formMinPriceRangeCEP
+    .c-formMinPriceRangeCEP {
+        .js-checkMinPrice__feedback {
+            @include roundedAll();
+            padding: 20px;
+            margin-top: 5px;
+            border: 1px solid $gray2;
+            background: $white3;
+            p {
+                margin-bottom: 0;
+                text-align: center;
+            }
+        }
+    }
+
+    // form feedbacks
+    .css-animation-load {
+        @include animation__formLoader;
+    }
+    .c-formFeedback {
+        display: block;
+        width: 100%;
+        &__content {
+            display: block;
+            width: 100%;
+            max-width: 270px;
+            margin: 0 auto;
+            padding: 25px 25px 15px 25px;
+        }
+        i {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 80px;
+            img {
+                display: block;
+                width: 80px;
+                height: 80px;
+                object-fit: contain;
+            }
+        }
+        p {
+            @include paragrafos();
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0;
+            a {
+                text-decoration: none;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .c-chatbot {
+        padding: 20px;
+        &__header {
+            &__brand {
+                img {
+                    width: 170px;
+                }
+            }
+        }
+
+        // small components
+        .c-form {
+            > ul {
+                @include calcWidthForPositionNegative(-5px);
+                > li {
+                    padding: 5px;
+                }
+            }
+        }
+
+        // .c-formMinPriceRangeCEP
+        .c-formMinPriceRangeCEP {
+            margin-bottom: 10px;
+            .c-form {
+                li.u-fw75 {
+                    @include flexWidth(60%);
+                }
+                li.u-fw25 {
+                    @include flexWidth(40%);
+                }
+            }
+        }
+
+        // c-formClientQualification
+        .c-formClientQualification {
+            .c-form {
+                li.u-fw30,
+                li.u-fw25,
+                li.u-fw75,
+                li.u-fw70,
+                li.u-fw60,
+                li.u-fw40,
+                li.u-fw50 {
+                    @include flexWidth(100%);
+                }
+                li.--spacer {
+                    hr {
+                        margin: 10px 0;
+                    }
+                }
+                li.--btn {
+                    @include flexWidth(50%);
+                }
+            }
+        }
+
+        // .c-formTechSupport
+        .c-formMinPriceRangeCEP {
+            .c-form {
+                li.u-fw60,
+                li.u-fw40 {
+                    @include flexWidth(100%);
+                }
+            }
+        }
+    }
+}

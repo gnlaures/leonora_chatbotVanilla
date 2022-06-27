@@ -1,0 +1,1 @@
+const cChatbotHero = '<div class="c-chatbot__hero"></div>';

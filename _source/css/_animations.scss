@@ -1,0 +1,37 @@
+@include keyframes(showContent) {
+  0% {
+    @include u-hideElement
+  }
+  100% {
+    @include u-showElement
+  }
+}
+@mixin animation__showContent() {
+  animation-name: showContent;
+  animation-duration: 500ms;
+  animation-iteration-count: inherit;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  animation-play-state: running;
+  //animation-fill-mode: forwards;
+  //animation-delay: 2s;
+}
+
+@include keyframes(formLoader) {
+  0% {
+    @include rotate(0deg, center)
+  }
+  100% {
+    @include rotate(360deg, center)
+  }
+}
+@mixin animation__formLoader() {
+  animation-name: formLoader;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  animation-play-state: running;
+  //animation-fill-mode: forwards;
+  //animation-delay: 2s;
+}

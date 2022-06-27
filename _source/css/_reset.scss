@@ -1,0 +1,38 @@
+// reset
+.c-chatbot, .c-chatbot *,
+.c-chatbotCall, .c-chatbotCall *{
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+
+  -webkit-margin-after: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-end: 0;
+  -webkit-margin-start: 0;
+
+  font-family: $fontFamily__default;
+  font-weight: normal;
+  list-style: none;
+  text-decoration: none;
+
+  @include userSelect();
+  @include selection {
+    background-color: $primary;
+  }
+}
+// body {
+  //overflow-x: hidden;
+  //display: block;
+  //min-height: 100vh;
+  //background: #ccc;
+  //padding: 40px;
+// }

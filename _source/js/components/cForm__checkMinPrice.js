@@ -1,0 +1,3 @@
+const cForm__checkMinPrice = '<div class="c-formMinPriceRangeCEP"><form class="c-form js-checkMinPrice"><ul><li' +
+    ' class="u-fw75"><input type="text" class="js-checkMinPrice__cep js-fieldValidation__cep js-fieldMask__cep"' +
+    ' placeholder="_____-___"></li><li class="u-fw25 u-dflex u-fdr u-jcfe"><button class="ga-chatbot__submitValorMinimo ga-chatbot__contaClique">Verificar</button></li></ul></form><div class="js-checkMinPrice__feedback u-dnone"><p class="js-checkMinPrice__value"></p></div><span class="c-spacer"></span><a href="#options_2" class="js-chatbot-link c-btn --small --back" title="Voltar"><span>Voltar</span></a></div>';
