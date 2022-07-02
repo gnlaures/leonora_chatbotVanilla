@@ -39,6 +39,12 @@ jsLinkChatbot.forEach((item) => {
     item.addEventListener('click', function(e) {
         e.preventDefault();
 
+        // hide feedbacks
+        document.querySelectorAll('.c-formFeedback__content').forEach((feedback) => {
+            //console.log(feedback)
+            feedback.classList.add('u-dnone');
+        })
+
         // close all
         document.querySelectorAll('.c-chatbot__content').forEach((content) => {
            content.classList.remove('is-active');
@@ -55,18 +61,13 @@ jsLinkChatbot.forEach((item) => {
         } else {
             document.querySelector('.c-chatbot__header').classList.add('--inner');
         }
-
-        // hide feedbacks
-        document.querySelectorAll('.c-formFeedback__content').forEach((feedback) => {
-            feedback.classList.add('u-dnone');
-        })
     });
 })
 
 // hash navigation
 if (cForm__hiddenFields.atendimento_leonora !== "") {
     let contentID = cForm__hiddenFields.atendimento_leonora;
-    console.log(contentID)
+    // console.log(contentID)
     if (document.getElementById(contentID)) {
         document.querySelectorAll('.c-chatbot__content').forEach((page) => {
             // active page
@@ -78,10 +79,10 @@ if (cForm__hiddenFields.atendimento_leonora !== "") {
             openChatbot();
         })
     } else {
-        console.log('n existe')
+        // console.log('n existe')
     }
 } else {
-    console.log('normal')
+    // console.log('normal')
 }
 
 // ?atendimento_leonora=quero-comprar-agora

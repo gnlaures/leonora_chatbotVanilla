@@ -65,7 +65,7 @@ const cForm__comprarAgora = '<div class="c-formClientQualification">' +
             '<li class="u-fw100 --spacer"><span class="c-spacer"></span></li>' +
             '<li class="u-fw100">' +
                 '<label for="techSupport_msg">Mensagem Adicional (Opcional)</label>' +
-                '<textarea id="clientQualification_msg" placeholder="Mensagem" class="js-fieldValidation__msg"></textarea>' +
+                '<textarea id="clientQualification_msg" placeholder="Mensagem"></textarea>' +
             '</li>'+
             '<li class="u-fw100 --btn u-dflex u-fdr u-jcfe">' +
                 '<button class="ga-chatbot__submitComprarAgora ga-chatbot__contaClique">Enviar</button>' +

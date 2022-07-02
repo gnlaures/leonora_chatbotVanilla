@@ -6,8 +6,8 @@ const rdStation = {
         "leads_mornos" : "62acbce3ce96650014280689",
         "leads_quentes" : "62acbce3ce9665001428068a",
         "suporte_tecnico" : "62b4a0746fd06c001339944a",
-        "suporte_comercial" : "62b4a0746fd06c001339944b",
-        "suporte_administrativo" : "62b4a0746fd06c001339944c",
+        "suporte_comercial" : "62b9e4429e9a490011afe6ec",
+        "suporte_administrativo" : "62b9e4551c3261000c219b1f",
     },
     "customFields" : {
         "msg" : "627457612141bb000d369c02", //Mensagem

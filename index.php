@@ -62,21 +62,21 @@
             const chatbotLeonora = {
                 "general" : {
                     "mode" : "compact",
-                    "home" : "",
+                    "home" : "quero-comprar-agora",
                     "hero" : "body",
-                    "extraClass" : "",
+                    "extraClass" : "--noTitles",
                     "mask" : true
                 },
                 "button" : {
                     "active" : true,
-                    "extraClass" : "ga-chatbot__open ga-chatbot__contaClique",
+                    "extraClass" : "ga-chatbot__open ga-chatbot__contaClique u-dnone",
                     "title" : "Precisa de ajuda?",
                     "caption" : "Iniciar Atendimento",
                     "icon_url" : "https://www.leonorab2b.com.br/arquivos/cChatbot_icon_chat.png?v=637891860858500000",
                     "position" : "right"
                 },
                 "header" : {
-                    "active" : true,
+                    "active" : false,
                     "brand_url" : "https://www.leonorab2b.com.br/arquivos/leonora_brand_b2b.png?v=637753474687370000",
                     "brand_title" : "Leonora B2B",
                     "description" : "Olá, Bem vindo(a) ao suporte online da Leonora B2B, selecione abaixo o assunto que você precisa de ajuda.",
@@ -84,6 +84,10 @@
                 },
                 "rdstation" : {
                     "organization" : "62b2275fdfe362000cd347fc"
+                },
+                "redirect" : {
+                    "active" : true,
+                    "redirect_url" : "https://lojista.leonorab2b.com.br/obrigado/",
                 }
             }
         </script>

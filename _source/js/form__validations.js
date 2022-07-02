@@ -152,9 +152,21 @@ function sendLeadToRDStation(form, rdData) {
     })
         .then(res => res.json())
         .then(data => {
-            // show/hide feedbacks
-            document.querySelector('.c-formFeedback__content.--load').classList.add('u-dnone');
-            document.querySelector('.c-formFeedback__content.--success').classList.remove('u-dnone');
+            // show/hide feedbacks or redirect
+            let thisFormComponentId = form.closest('.c-chatbot__content').getAttribute('id');
+
+            if (thisFormComponentId === "quero-comprar-agora") {
+                if (chatbotLeonora.redirect.active) {
+                    window.location.href = chatbotLeonora.redirect.redirect_url;
+                } else {
+                    document.querySelector('.c-formFeedback__content.--load').classList.add('u-dnone');
+                    document.querySelector('.c-formFeedback__content.--success').classList.remove('u-dnone');
+                }
+            } else {
+                document.querySelector('.c-formFeedback__content.--load').classList.add('u-dnone');
+                document.querySelector('.c-formFeedback__content.--success').classList.remove('u-dnone');
+            }
+
             // clean fields
             form.querySelectorAll('input').forEach((field) => {field.value = ''});
             form.querySelectorAll('textarea').forEach((field) => {field.value = ''});
